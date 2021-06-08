@@ -46,4 +46,15 @@
 - enabled=1
 - gpgkey=https://nginx.org/keys/nginx_signing.key
 - module_hotfixes=true
--
+10. Устанавливаем доп утилиту к yum   yum install yum-utils.noarch
+11. Устанавливаем NGINX    yum install nginx
+12. Создать файл upstream.conf в /etc/nginx/conf.d/
+-upstream test-upstream {
+-    server 192.168.11.101:8081;
+-    server 192.168.11.101:8082;
+-    server 192.168.11.101:8083;
+-}
+13. Заменяем в файле /etc/nginx/conf.d/default.conf в секции location
+- proxy_pass http://test-upstream;
+14. Проверяем синтаксис конфигурации nginx -t
+15. Запускаем nginx     systemctl start nginx
