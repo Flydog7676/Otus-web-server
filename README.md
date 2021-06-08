@@ -9,8 +9,8 @@ setenforce 0
   cp /usr/share/httpd/noindex/index.html /var/www/8081/index.html
   cp /usr/share/httpd/noindex/index.html /var/www/8082/index.html
 Для проверки меняем названия в index.html в папках:
-  в 8081 заменяем строчку <h1>Testing 123..</h1> на <h1>Testing 8081..</h1>
-  в 8082 заменяем строчку <h1>Testing 123..</h1> на <h1>Testing 8082..</h1>
+  в 8081 заменяем строчку Testing 123.. на Testing 8081..
+  в 8082 заменяем строчку Testing 123.. на Testing 8082..
 Настройка виртуальные сервера httpd на разные порты 8081,8082
   Открываем файл конфигурации httpd /etc/httpd/conf/httpd.conf
   Заменяем строчку Listen 80 на :
