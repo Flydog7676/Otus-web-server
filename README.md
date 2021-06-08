@@ -1,6 +1,6 @@
 # Otus-web-server
 1. Для тестовой эксплуатации выключаем selinux:
-  setenforce 0
+- setenforce 0
   в файле /etc/selinux/config пишем SELINUX=disable 
 2. Установка Apache в систему   yum install httpd
 Создаем папки с виртуальными серверами в apache   
