@@ -1,14 +1,14 @@
 # Otus-web-server
 1. Для тестовой эксплуатации выключаем selinux:
 - setenforce 0
-  в файле /etc/selinux/config пишем SELINUX=disable 
+- в файле /etc/selinux/config пишем SELINUX=disable 
 2. Установка Apache в систему   yum install httpd
-Создаем папки с виртуальными серверами в apache   
-  в папке /var/www создаем папки k dir 808{1..2}
-  копируем в папки тестовую html страницу
-  cp /usr/share/httpd/noindex/index.html /var/www/8081/index.html
-  cp /usr/share/httpd/noindex/index.html /var/www/8082/index.html
-Для проверки меняем названия в index.html в папках:
+3. Создаем папки с виртуальными серверами в apache   
+- в папке /var/www создаем папки k dir 808{1..2}
+- копируем в папки тестовую html страницу
+- cp /usr/share/httpd/noindex/index.html /var/www/8081/index.html
+- cp /usr/share/httpd/noindex/index.html /var/www/8082/index.html
+4. Для проверки меняем названия в index.html в папках:
   в 8081 заменяем строчку Testing 123.. на Testing 8081..
   в 8082 заменяем строчку Testing 123.. на Testing 8082..
 Настройка виртуальные сервера httpd на разные порты 8081,8082
