@@ -1,4 +1,7 @@
 # Otus-web-server
+Для тестовой эксплуатации выключаем selinux:
+setenforce 0
+в файле /etc/selinux/config пишем SELINUX=disable 
 Установка Apache в систему   yum install httpd
 Создаем папки с виртуальными серверами в apache   
   в папке /var/www создаем папки k dir 808{1..2}
@@ -14,12 +17,12 @@
   Listen 8081
   Listen 8082
 Создаем файлы описания виртуальных вебсерверов:
-  создаем файл server1 в /etc/httpd/conf.d/
+  создаем файл server1.conf в /etc/httpd/conf.d/
   <VirtualHost *:8081>
   ServerAdmin alex@ulnanotech.com
   DocumentRoot /var/www/8081
   </VirtualHost>
-  создаем файл server2 в /etc/httpd/conf.d/
+  создаем файл server2.conf в /etc/httpd/conf.d/
   <VirtualHost *:8082>
   ServerAdmin alex@ulnanotech.com
   DocumentRoot /var/www/8082
