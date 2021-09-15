@@ -21,10 +21,11 @@
 - Listen 8083
 6. Создаем файлы описания виртуальных вебсерверов:
 -  создаем файл server1.conf в /etc/httpd/conf.d/
--  <VirtualHost *:8081>
--  ServerAdmin alex@ulnanotech.com
--  DocumentRoot /var/www/8081
--  </VirtualHost>
+```<VirtualHost *:8081>
+   ServerAdmin alex@ulnanotech.com
+   DocumentRoot /var/www/8081
+   </VirtualHost>
+   ```
 7. Cоздаем файл server2.conf в /etc/httpd/conf.d/
 -  <VirtualHost *:8082>
 -  ServerAdmin alex@ulnanotech.com
