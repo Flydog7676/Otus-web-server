@@ -28,18 +28,22 @@
    </VirtualHost>
 ```
 7. Cоздаем файл server2.conf в /etc/httpd/conf.d/
--  <VirtualHost *:8082>
--  ServerAdmin alex@ulnanotech.com
--  DocumentRoot /var/www/8082
--  </VirtualHost>
-8. Cоздаем файл server3.conf в /etc/httpd/conf.d/
--  <VirtualHost *:8083>
--  ServerAdmin alex@ulnanotech.com
--  DocumentRoot /var/www/8083
--  </VirtualHost>
-8. Проверим на ошибки синтаксиса конфигурации httpd    httpd -t
+```
+   <VirtualHost *:8082>
+   ServerAdmin alex@ulnanotech.com
+   DocumentRoot /var/www/8082
+   </VirtualHost>
+```
+9. Cоздаем файл server3.conf в /etc/httpd/conf.d/
+```
+   <VirtualHost *:8083>
+   ServerAdmin alex@ulnanotech.com
+   DocumentRoot /var/www/8083
+   </VirtualHost>
+```
+11. Проверим на ошибки синтаксиса конфигурации httpd    httpd -t
 - Устанавливаем NGINX и прописываем UPSTREAM
-9. создаем новую запись на репозитарий
+12. создаем новую запись на репозитарий
 - создаем файл nginx.repo в /etc/yum.repo.d/ c данными:
 - [nginx-stable]
 - name=nginx stable repo
@@ -48,15 +52,19 @@
 - enabled=1
 - gpgkey=https://nginx.org/keys/nginx_signing.key
 - module_hotfixes=true
-10. Устанавливаем доп утилиту к yum   yum install yum-utils.noarch
-11. Устанавливаем NGINX    yum install nginx
-12. Создать файл upstream.conf в /etc/nginx/conf.d/
--upstream test-upstream {
--    server 192.168.11.101:8081;
--    server 192.168.11.101:8082;
--    server 192.168.11.101:8083;
--}
-13. Заменяем в файле /etc/nginx/conf.d/default.conf в секции location
-- proxy_pass http://test-upstream;
-14. Проверяем синтаксис конфигурации nginx -t
-15. Запускаем nginx     systemctl start nginx
+13. Устанавливаем доп утилиту к yum   yum install yum-utils.noarch
+14. Устанавливаем NGINX    yum install nginx
+15. Создать файл upstream.conf в /etc/nginx/conf.d/
+```
+upstream test-upstream {
+server 192.168.11.101:8081;
+server 192.168.11.101:8082;
+server 192.168.11.101:8083;
+}
+```
+16. Прописываем в файле /etc/nginx/nginx.conf.default в отделе location \ {
+```
+   proxy_pass http://test-upstream;
+```
+18. Проверяем синтаксис конфигурации nginx -t
+19. Запускаем nginx     systemctl start nginx
